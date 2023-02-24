@@ -2826,5 +2826,18 @@ const SAVE_MODE_  __attribute__((aligned(4))) saveMODE_table[] = {
 {"TCHK",0x11},//???? - AGB_CHECKER
 {"ARSH",0x11},//???? - Tetanus On Drugs (U) (PD).zip
 
+{"AWRC",0x32},//Advance_Wars_(Prototype,_iQue).zip
+{"AVFC",0x11},//Densetsu_no_Stafy2_(Prototype,_iQue).zip
+{"ASTC",0x11},//Densetsu_no_Stafy_(Prototype,_iQue).zip
+{"BBKC",0x11},//DK_King_of_Swing_(Prototype,_iQue).zip
+{"FICC",0x22},//Famicom_Mini_Collection_(Prototype,_iQue).zip
+{"AFEC",0x11},//Fire_Emblem_(Prototype,_iQue).zip
+{"A9QC",0x11},//Kuruin_Paradise_(Prototype,_iQue).zip
+{"AKRC",0x11},//Kuru_Kuru_Kuruin_(Prototype,_iQue).zip
+{"AMKC",0x32},//Mario_Kart_Super_Circuit_(Prototype,_iQue).zip
+{"A88C",0x22},//Mario_Luigi_Super_Star_Saga_(Prototype,_iQue).zip
+{"BIIC",0x33},//Polarium_Advance_(Prototype,_iQue).zip
+{"AGLC",0x22},//Tomato_Adventure_(Prototype,_iQue).zip
+
 {"FFFF",0x00}
 };

@@ -259,7 +259,7 @@ void IWRAM_CODE SetRompageWithHardReset(u16 page,u32 bootmode)
 			SoftReset_now(0,0xff);
 		else
 			HardReset();
-		
+
 	} else if (bootmode==2 || bootmode==4 || bootmode==5) {
 		int i;
 		//Clear exram up to pogoshell arg
@@ -333,22 +333,22 @@ void IWRAM_CODE Save_info(u32 info_offset, u8 * info_buffer,u32 buffersize)
 	register u32 loopwrite ;
 	vu16 v1,v2;
 	u16 S71id =  Read_S71NOR_ID();
-	
-	*((vu16 *)(FlashBase_S71)) = 0xF0 ;	
-	
+
+	*((vu16 *)(FlashBase_S71)) = 0xF0 ;
+
 	offset= info_offset;//0x7A0000/0x7B0000 ;
-	
+
 	*((vu16 *)(FlashBase_S71+0x555*2)) = 0xAA ;
 	*((vu16 *)(FlashBase_S71+0x2AA*2)) = 0x55 ;
 	*((vu16 *)(FlashBase_S71+0x555*2)) = 0x80 ;
 	*((vu16 *)(FlashBase_S71+0x555*2)) = 0xAA ;
-	*((vu16 *)(FlashBase_S71+0x2AA*2)) = 0x55 ;	
+	*((vu16 *)(FlashBase_S71+0x2AA*2)) = 0x55 ;
 	*((vu16 *)(FlashBase_S71+offset)) = 0x30 ;//erase
 	do
 	{
 		v1 = *((vu16 *)(FlashBase_S71+offset)) ;
 		v2 = *((vu16 *)(FlashBase_S71+offset)) ;
-	}while(v1!=v2);		
+	}while(v1!=v2);
 	//erase finish
 	if(S71id == 0x2202) //PL064
 	{
@@ -363,7 +363,7 @@ void IWRAM_CODE Save_info(u32 info_offset, u8 * info_buffer,u32 buffersize)
 				v1 = *((vu16 *)(FlashBase_S71+offset+loopwrite*2)) ;
 				v2 = *((vu16 *)(FlashBase_S71+offset+loopwrite*2)) ;
 			}while(v1!=v2);
-		}			
+		}
 	}
 	else {
 		u32 i;
@@ -376,9 +376,9 @@ void IWRAM_CODE Save_info(u32 info_offset, u8 * info_buffer,u32 buffersize)
 			for(i=0;i<=15;i++)
 			{
 				*((vu16 *)(FlashBase_S71+offset+loopwrite*32 +2*i )) = buf[loopwrite*16+i];
-			}	
+			}
 			*((vu16 *)(FlashBase_S71+offset+loopwrite*32)) = 0x29;
-			
+
 			do
 			{
 				v1 = *((vu16 *)(FlashBase_S71+offset+loopwrite*32));
@@ -387,7 +387,7 @@ void IWRAM_CODE Save_info(u32 info_offset, u8 * info_buffer,u32 buffersize)
 		}
 	}
 
-	*((vu16 *)(FlashBase_S71)) = 0xF0;	
+	*((vu16 *)(FlashBase_S71)) = 0xF0;
 }
 // --------------------------------------------------------------------
 void IWRAM_CODE Save_NOR_info(u8 * NOR_info_buffer,u32 buffersize)
@@ -485,7 +485,7 @@ void IWRAM_CODE Set_AUTO_save(u16  mode)
 void IWRAM_CODE Check_FW_update(u16 Current_FW_ver,u16 Built_in_ver)
 {
 	ASC_DATA = ASC_DATA_OLD;
-	
+
     vu16 busy;
     vu32 offset;
     u32 offset_Y = 5;

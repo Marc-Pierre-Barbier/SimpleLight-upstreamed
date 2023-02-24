@@ -1,11 +1,10 @@
 @;--------------------------------------------------------------------
 	.section   	.text,"ax",%progbits
-
 	.global  Fire_Emblem_iQue_patch_start
 	.global  Fire_Emblem_iQue_patch_end
 
 
-@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	.thumb
 Fire_Emblem_iQue_patch_start:
 	PUSH  {R0-R4}
@@ -28,7 +27,7 @@ Fire_Emblem_iQue_patch_start:
 	POP 	{R0-R4}
 	POP 	{R4-R7}
 	POP  	{R0}
-	BX    R0	
+	BX    R0
 @;----------------------------------
 	PUSH	{R0-R4}
 	BL		Set_save
@@ -52,14 +51,14 @@ exit:
 	POP  	{R0}
 	BX    R0
 @;----------------------------------
-@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 Set_save:
 	PUSH	{R1-R7,LR}
 	MOV		R0,#0x02
 	BL		Set_AUTO_save
 	MOV		R0,#0x00
 	BL		Set_AUTO_save
-	POP		{R1-R7}	
+	POP		{R1-R7}
 	POP		{R0}
 	BX		R0
 @;----------------------------------
@@ -82,7 +81,7 @@ Set_AUTO_save:
 	STRH    R3, [R2]
 	BX      LR
 
-	.ltorg	
-	.align	
+	.ltorg
+	.align
 Fire_Emblem_iQue_patch_end:
    .end

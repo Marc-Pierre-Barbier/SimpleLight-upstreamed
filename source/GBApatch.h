@@ -50,6 +50,26 @@ extern void Modify_address_B(void);
 extern void Fire_Emblem_iQue_patch_start(void);
 extern void Fire_Emblem_iQue_patch_end(void);
 
+extern void RTS_only_ReplaceIRQ_start(void);
+extern void RTS_only_ReplaceIRQ_end(void);
+extern void RTS_only_Return_address_L(void);
+extern void RTS_only_SAVE_key(void);
+extern void RTS_only_LOAD_key(void);
+
+
+extern void Fire_Emblem_0378_patch_start(void);
+extern void Fire_Emblem_0378_patch_end(void);
+extern void Fire_Emblem_1692_patch_start(void);
+extern void Fire_Emblem_1692_patch_end(void);
+extern void Fire_Emblem_A_patch_start(void);
+extern void Fire_Emblem_A_patch_end(void);
+extern void Modify_address_A(void);
+extern void Fire_Emblem_B_patch_start(void);
+extern void Fire_Emblem_B_patch_end(void);
+extern void Modify_address_B(void);
+extern void Fire_Emblem_iQue_patch_start(void);
+extern void Fire_Emblem_iQue_patch_end(void);
+
 extern u32 gl_cheat_count;
 
 
@@ -64,7 +84,7 @@ u32 Check_RTS(TCHAR* gamefilename);
 u8 Check_mde_file(TCHAR* gamefilename);
 void Make_mde_file(TCHAR* gamefilename,u8 Save_num);
 
-void Patch_SpecialROM_sheepmode(void);
+void Patch_SpecialROM_sleepmode(void);
 u32 use_internal_engine(u8 gamecode[]);
 u32 Check_cheat_file(TCHAR *gamefilename);
 void SetTrimSize(u8* buffer,u32 romsize,u32 iSize,u32 mode,BYTE saveMODE);

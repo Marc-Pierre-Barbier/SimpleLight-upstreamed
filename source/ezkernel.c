@@ -581,9 +581,9 @@ void IWRAM_CODE Refresh_filename(u32 show_offset, u32 file_select, u32 updown, u
 		xx1 = file_select;
 		xx2 = file_select+1;
 		showy1 = y_offset +(file_select)*14;
-		showy2 = y_offset +(file_select+1)*14;	
-		Clear(18,20 + xx1*14,clean_len1,13,gl_color_selectBG_sd,1);	
-		ClearWithBG((u16*)gImage_SD,17, 20 + xx2*14,clean_len2, 13, 1);	
+		showy2 = y_offset +(file_select+1)*14;
+		Clear(18,20 + xx1*14,clean_len1,13,gl_color_selectBG_sd,1);
+		ClearWithBG((u16*)gImage_SD,17, 20 + xx2*14,clean_len2, 13, 1);
 	}
 	if ((file_select == (need_show_folder - 1)) && (updown == 3)) {
 		DrawHZText12(pFolder[show_offset + xx1].filename, char_num1, 3 + 16, showy1, name_color1, 1);
@@ -919,7 +919,7 @@ void Show_game_name(u32 total, u32 Select)
 		else {
 			name_color = gl_color_text;
 		}
-		sprintf(msg, "%s", &(p_recently_play[line]));
+		sprintf(msg, "%s", (char *)&(p_recently_play[line]));
 		DrawHZText12(msg, 39, X_offset, Y_offset + line * line_x, name_color, 1);
 	}
 }
@@ -1308,7 +1308,7 @@ void CheckLanguage(void)
 	if (gl_select_lang == 0xE1E1) { //english
 		LoadEnglish();
 	}
-	else { //ÖÐÎÄ
+	else { //ï¿½ï¿½ï¿½ï¿½
 		LoadChinese();
 	}
 }
@@ -1901,8 +1901,7 @@ void Backup_savefile(const char* filename)
 	temp_filename[temp_filename_length] = '0';
 	Copy_file(filename, temp_filename);
 }
-//---------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------
+
 //---------------------------------------------------------------------------------
 // Program entry point
 //---------------------------------------------------------------------------------
@@ -1941,7 +1940,7 @@ int main(void)
 	DrawPic((u16*)gImage_splash, 0, 0, 240, 160, 0, 0, 1);
 	CheckLanguage();
 	CheckSwitch();
-	u8 i;
+
 	/*
 	for(i = 16; i > 0; i--) {
 		VBlankIntrWait();
@@ -2104,8 +2103,8 @@ re_showfile:
 			if (updata == 1) { //reshow all
 				if (page_num == SD_list) {
 					in_recently_play = 0;
-					DrawPic((u16*)gImage_SD, 0, 0, 240, 160, 0, 0, 1);	
-					//ClearWithBG((u16*)gImage_SD,0, 0, 90, 20, 1);  //  		
+					DrawPic((u16*)gImage_SD, 0, 0, 240, 160, 0, 0, 1);
+					//ClearWithBG((u16*)gImage_SD,0, 0, 90, 20, 1);  //
 					//ClearWithBG((u16*)gImage_SD,185+6, 3, 6*3, 16, 1);//Show_game_num
 					//ClearWithBG((u16*)gImage_SD,0, 20, 240, 160-20, 1);
 					Show_ICON_filename(show_offset, file_select, gl_show_Thumbnail && is_GBA);
@@ -2968,14 +2967,11 @@ re_showfile:
 //---------------------------------------------------------------
 void IWRAM_CODE StartRandomROM(TCHAR path)
 {
-	u32 res;
 	int randfile;
 	TCHAR currentpath[MAX_path_len];
 	randfile = rand() % game_total_SD + folder_total;
 	sprintf(currentpath, "%s%s", currentpath, pFolder[randfile].filename);
-	res = f_chdir(currentpath);
-	TCHAR* randfilename;
-	randfilename = pFilename_buffer[randfile].filename;
+	f_chdir(currentpath);
 	char* msg;
 	sprintf(msg, "%d", randfile);
 	DrawHZText12(msg, 0, 3, 20, 0x7FFF, 1);
